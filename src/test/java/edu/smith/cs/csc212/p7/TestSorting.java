@@ -1,5 +1,7 @@
 package edu.smith.cs.csc212.p7;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -57,5 +59,34 @@ public class TestSorting {
 		Assert.assertTrue(checkSorted(sortMe));
 	}
 
+	@Test
+	public void testSelectionSort() {
+		ListADT<Integer> sortMe = new JavaList<>();
+		for (int y : data) {
+			sortMe.addBack(y);
+		}
+		sortMe = SelectionSort.selectionSort(sortMe);
+		Assert.assertTrue(checkSorted(sortMe));
+		Random rand = new Random(25);
+		sortMe.shuffle(rand);
+		sortMe = SelectionSort.selectionSort(sortMe);
+		Assert.assertTrue(checkSorted(sortMe));
+		
+	}
+	
+	@Test
+	public void testInsertionSort() {
+		ListADT<Integer> sortMe = new JavaList<>();
+		for (int y : data) {
+			sortMe.addBack(y);
+		}
+		sortMe = InsertionSort.insertionSort(sortMe);
+		Assert.assertTrue(checkSorted(sortMe));
+		Random rand = new Random(25);
+		sortMe.shuffle(rand);
+		sortMe = InsertionSort.insertionSort(sortMe);
+		Assert.assertTrue(checkSorted(sortMe));
+		
+	}
 
 }

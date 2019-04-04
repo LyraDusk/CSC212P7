@@ -57,6 +57,7 @@ public class TestSorting {
 		
 		BubbleSort.bubbleSort(sortMe);
 		Assert.assertTrue(checkSorted(sortMe));
+		Assert.assertTrue(sortMe.size() == 9);
 	}
 
 	@Test
@@ -65,12 +66,15 @@ public class TestSorting {
 		for (int y : data) {
 			sortMe.addBack(y);
 		}
-		sortMe = SelectionSort.selectionSort(sortMe);
-		Assert.assertTrue(checkSorted(sortMe));
 		Random rand = new Random(25);
 		sortMe.shuffle(rand);
 		sortMe = SelectionSort.selectionSort(sortMe);
 		Assert.assertTrue(checkSorted(sortMe));
+		Assert.assertTrue(sortMe.size() == 9);
+		sortMe.shuffle(rand);
+		sortMe = SelectionSort.selectionSort(sortMe);
+		Assert.assertTrue(checkSorted(sortMe));
+		Assert.assertTrue(sortMe.size() == 9);
 		
 	}
 	
@@ -80,12 +84,51 @@ public class TestSorting {
 		for (int y : data) {
 			sortMe.addBack(y);
 		}
-		sortMe = InsertionSort.insertionSort(sortMe);
-		Assert.assertTrue(checkSorted(sortMe));
 		Random rand = new Random(25);
 		sortMe.shuffle(rand);
 		sortMe = InsertionSort.insertionSort(sortMe);
 		Assert.assertTrue(checkSorted(sortMe));
+		Assert.assertTrue(sortMe.size() == 9);
+		sortMe.shuffle(rand);
+		sortMe = InsertionSort.insertionSort(sortMe);
+		Assert.assertTrue(checkSorted(sortMe));
+		Assert.assertTrue(sortMe.size() == 9);
+		
+	}
+	
+	@Test
+	public void testRecursiveMerge() {
+		ListADT<Integer> sortMe = new JavaList<>();
+		for (int y : data) {
+			sortMe.addBack(y);
+		}
+		Random rand = new Random(25);
+		sortMe.shuffle(rand);
+		sortMe = MergeSort.mergeSortRecursive(sortMe);
+		Assert.assertTrue(checkSorted(sortMe));
+		Assert.assertTrue(sortMe.size() == 9);
+		sortMe.shuffle(rand);
+		sortMe = MergeSort.mergeSortRecursive(sortMe);
+		Assert.assertTrue(checkSorted(sortMe));
+		Assert.assertTrue(sortMe.size() == 9);
+		
+	}
+	
+	@Test
+	public void testIterativeMerge() {
+		ListADT<Integer> sortMe = new JavaList<>();
+		for (int y : data) {
+			sortMe.addBack(y);
+		}
+		Random rand = new Random(25);
+		sortMe.shuffle(rand);
+		sortMe = MergeSort.mergeSortIterative(sortMe);
+		Assert.assertTrue(checkSorted(sortMe));
+		Assert.assertTrue(sortMe.size() == 9);
+		sortMe.shuffle(rand);
+		sortMe = MergeSort.mergeSortIterative(sortMe);
+		Assert.assertTrue(checkSorted(sortMe));
+		Assert.assertTrue(sortMe.size() == 9);
 		
 	}
 

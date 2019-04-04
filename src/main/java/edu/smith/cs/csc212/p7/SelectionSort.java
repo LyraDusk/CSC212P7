@@ -4,6 +4,9 @@ import edu.smith.cs.csc212.adtr.ListADT;
 import edu.smith.cs.csc212.adtr.real.JavaList;
 
 public class SelectionSort {
+	/*
+	 *  Selection sort takes an input list and returns a sorted output list.
+	 */
 
 	public static ListADT<Integer> selectionSort(ListADT<Integer> input) {
 		ListADT<Integer> sorted = new JavaList<>();

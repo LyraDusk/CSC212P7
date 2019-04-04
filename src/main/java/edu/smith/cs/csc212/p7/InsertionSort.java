@@ -4,32 +4,39 @@ import edu.smith.cs.csc212.adtr.ListADT;
 import edu.smith.cs.csc212.adtr.real.JavaList;
 
 public class InsertionSort {
-	
+	/*
+	 * Sorts a list by taking the first item off the list and inserting it
+	 * into a sorted list at the correct index.
+	 * Takes one list and returns a new one.
+	 */
 	public static ListADT<Integer> insertionSort(ListADT<Integer> input) {
 		ListADT<Integer> sorted = new JavaList<>();
-		while (input.size() > 0) {
+		int size = input.size();
+		while (sorted.size() < size) {
 			int value = input.removeFront();
 			Integer index = null;
 			if (sorted.size() == 0) {
 				sorted.addFront(value);
-				System.out.println("a");
 				continue;
 			}
+			
+			//Get the first higher index to insert the value
 			for (int i = 0; i < sorted.size(); i++) {
 				if (sorted.getIndex(i) > value) {
 					index = i;
-					System.out.println("b");
 					break;
 				} else {
-					System.out.println("c");
-					continue;
+					index = -1;
 				}
 			}
-			if (index != null) {
-				sorted.addIndex(index, value);
+			// if value is the highest, add to back
+			if (index == -1) {
+				sorted.addBack(value);
+			// else, add it to its index
 			} else {
-				input.addBack(value);
+				sorted.addIndex(index, value);
 			}
+			
 		}
 		return sorted;
 	}
